@@ -63,7 +63,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 1
+			总文章数 2
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -277,6 +277,204 @@
 
 
   
+    <article id="post-测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/09/%E6%B5%8B%E8%AF%95/">java中的数据及常见的排序算法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/09/%E6%B5%8B%E8%AF%95/" class="archive-article-date">
+  	<time datetime="2020-11-09T13:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-09</time>
+</a>
+        <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+        <!-- 添加完成 -->
+
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h2 id="java-中的数组"><a href="#java-中的数组" class="headerlink" title="java 中的数组"></a>java 中的数组</h2></blockquote>
+<ul>
+<li>一维数组：eg: int[] array = new int[指定数组的长度]</li>
+<li>二维数组：eg：int[][] array = new int[指定的行数][指定的列数]</li>
+</ul>
+<blockquote>
+<p>java的数组操作</p>
+</blockquote>
+<ul>
+<li>java数组操作之前也都学过</li>
+<li>索引查找、for循环遍历、foreach循环</li>
+<li>数组中的方法：数组名.length可以获得数组的长度</li>
+<li>Arrays工具类</li>
+</ul>
+<blockquote>
+<p>数组查找自己实现二分查找：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">package Sortalgorithm;</span><br><span class="line"></span><br><span class="line">public class Arraytest02 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;&#x2F;传入的数组必须有序</span><br><span class="line">        int[] array &#x3D; new int[]&#123;10, 20, 30, 40, 50, 60, 70,80&#125;;</span><br><span class="line">        int indexByEF &#x3D; getIndexByEF(array, 100);&#x2F;&#x2F;-1</span><br><span class="line">        int indexByEF1 &#x3D; getIndexByEF(array, 40);&#x2F;&#x2F;3</span><br><span class="line">        System.out.println(indexByEF);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static int getIndexByEF(int[] array,int element)&#123;</span><br><span class="line">        &#x2F;&#x2F;定义最小索引、中间索引、最大索引</span><br><span class="line">        int minIndex &#x3D; 0;</span><br><span class="line">        int maxIndex &#x3D; array.length-1;</span><br><span class="line">        int centerIndex  &#x3D; (minIndex + maxIndex)&#x2F;2;</span><br><span class="line">        while(minIndex &lt;&#x3D; maxIndex)&#123;</span><br><span class="line">            &#x2F;&#x2F;1、如果指定的元素正好等于中间索引处的元素则返回中间索引</span><br><span class="line">            if(element &#x3D;&#x3D; array[centerIndex])</span><br><span class="line">                return centerIndex;</span><br><span class="line">            &#x2F;&#x2F;2、如果小于中间索引出的元素，则移动最大索引到中间索引</span><br><span class="line">            else if( element &lt; array[centerIndex])</span><br><span class="line">                maxIndex &#x3D; centerIndex - 1;</span><br><span class="line">            &#x2F;&#x2F;3、如果大于中间索引处的元素，则移动最小元素到中间元素</span><br><span class="line">            else if(element &gt; array[centerIndex])</span><br><span class="line">                minIndex &#x3D; centerIndex + 1;</span><br><span class="line">            &#x2F;&#x2F;每次重新计算中间索引</span><br><span class="line">            centerIndex &#x3D; (minIndex + maxIndex) &#x2F; 2;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;返回-1表示没有查找到相应元素的索引</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h3 id="数组排序-冒泡排序"><a href="#数组排序-冒泡排序" class="headerlink" title="数组排序-冒泡排序"></a>数组排序-冒泡排序</h3></blockquote>
+<ul>
+<li>排序原理：对一组数据，从开始索引处，两两进行比较，交换位置，如果是升序排列，在交换位置的时候，大的数据往后放，经过一轮两两比较之后，最大的数据就被放在了最后面，然后继续如此循环，直到最后剩下的第一个元素和第二个元素的比较完成</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;冒泡排序算法实现</span><br><span class="line">public class Arraytest03 &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] array &#x3D; new int[]&#123;10,32,14,53,5,9,10&#125;;</span><br><span class="line">        int[] ints &#x3D; BubbleSort(array);</span><br><span class="line">        for (int anInt : ints) &#123;</span><br><span class="line">            System.out.print(anInt+&quot;\t&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 冒泡的重载，默认升序</span><br><span class="line">     * @param array</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static int[] BubbleSort(int[] array)&#123;</span><br><span class="line">        return BubbleSort(array,0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     *</span><br><span class="line">     * @param array 传入的需要排序的数组</span><br><span class="line">     * @param rule 数组排序规则，小于0 降序，大于0或者等于0则升序排列</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static int[] BubbleSort(int[] array,int rule)&#123;</span><br><span class="line">        &#x2F;&#x2F;遍历数组</span><br><span class="line">        &#x2F;&#x2F;定义一个中间变量</span><br><span class="line">        int temp;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; array.length-1; i++) &#123;</span><br><span class="line">            for (int j &#x3D; 0; j &lt; array.length - 1 - i ; j++) &#123;</span><br><span class="line">                if(rule &lt; 0 ? array[j] &lt; array [j+1] : array[j] &gt; array [j+1])&#123;</span><br><span class="line">                    temp &#x3D; array[j];</span><br><span class="line">                    array[j] &#x3D; array[j+1];</span><br><span class="line">                    array[j+1] &#x3D; temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return array;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">可以进行一些优化，判断数组是否为空、根据一些特殊的情况减少排序的次数。等……</span><br><span class="line">*&#x2F;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h3 id="数组排序-选择排序"><a href="#数组排序-选择排序" class="headerlink" title="数组排序-选择排序"></a>数组排序-选择排序</h3></blockquote>
+<ul>
+<li>排序原理：从数组的0索引开始，依次和后面的元素进行比较，如果后面的元素小于了0索引则交换位置，直到比较到最后一个元素第一轮结束</li>
+<li>第二轮从第1索引开始继续第一轮的操作。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">选择排序算法</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class Arraytest04 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] array &#x3D; new int[]&#123;10,32,14,53,5,9,10&#125;;</span><br><span class="line">        int[] ints &#x3D; SelectSort(array,-1);</span><br><span class="line">        System.out.println(Arrays.toString(array));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 选择排序默认升序排序</span><br><span class="line">     * @param array</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static int[] SelectSort(int[] array)&#123;</span><br><span class="line">        return SelectSort(array,0);</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 选择排序</span><br><span class="line">     * @param array 排序数组</span><br><span class="line">     * @param rule 排序规则，负数为降序，0或者整数为升序</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static int[] SelectSort(int[] array,int rule)&#123;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; array.length-1; i++) &#123;</span><br><span class="line">            for (int j &#x3D; 1+i; j &lt;array.length ; j++) &#123;</span><br><span class="line">                if(rule &gt;&#x3D; 0 ? array[i] &gt; array[j] : array[i] &lt; array[j])&#123;</span><br><span class="line">                    int temp &#x3D; array[i];</span><br><span class="line">                    array[i] &#x3D; array[j];</span><br><span class="line">                    array[j] &#x3D; temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return array;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h3 id="数组排序-直接排序算法"><a href="#数组排序-直接排序算法" class="headerlink" title="数组排序-直接排序算法"></a>数组排序-直接排序算法</h3></blockquote>
+<ul>
+<li>排序原理：最简单的排序算法，将数组中的每个元素从0索引处插入一个长度为m的有序数列中使之保持有序。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * 直接接插入排序算法</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class ArrayTest05 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] array &#x3D; new int[]&#123;10,23,12,2,30,40,10&#125;;</span><br><span class="line">        int[] ints &#x3D; DirectSort(array);</span><br><span class="line">        System.out.println(Arrays.toString(ints));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 直接排序函数重载函数，默认升序排序</span><br><span class="line">     * @param array 传入排序的数组</span><br><span class="line">     * @return 排序后的数组</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static  int[] DirectSort(int[] array)&#123;</span><br><span class="line">        return DirectSort(array,0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 直接插入排序算法</span><br><span class="line">     * @param array 传入排序的数组</span><br><span class="line">     * @param rule 传入的排序规则，大于等于0升序，小于0降序</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static int[] DirectSort(int[] array , int rule)&#123;</span><br><span class="line">        for (int i &#x3D; 1; i &lt; array.length; i++) &#123;</span><br><span class="line">            for (int j &#x3D; i; j &gt; 0 ; j--) &#123;</span><br><span class="line">                if(rule &gt;&#x3D; 0 ? array[j] &lt; array[j-1] : array[j] &gt; array[j-1])&#123;</span><br><span class="line">                    int temp &#x3D; array[j];</span><br><span class="line">                    array[j] &#x3D; array[j-1];</span><br><span class="line">                    array[j-1] &#x3D; temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return array;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h3 id="数组排序算法-希尔排序"><a href="#数组排序算法-希尔排序" class="headerlink" title="数组排序算法-希尔排序"></a>数组排序算法-希尔排序</h3></blockquote>
+<ul>
+<li>排序原理：又称为缩小增量排序，首先将数组进行一定增量分组，对每个分组进行插入排序，然后缩小增量在进行分组，再进行插入排序，直到增量为1时就排好了。这是对插入排序的优化。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * 希尔排序算法</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class Arraytest06 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] arr &#x3D; new int[]&#123;10,1,4,24,6,39,10,23,45,12,24,35,66,75,76,100&#125;;</span><br><span class="line">        &#x2F;&#x2F;选择第一次增量为数组长度一半的希尔排序算法</span><br><span class="line">        int[] ints &#x3D; ShellSort(arr);</span><br><span class="line">        &#x2F;&#x2F;使用克努力方程来选择增量进行排序</span><br><span class="line">        int[] ints1 &#x3D; ShellSortKnuth(arr);</span><br><span class="line">        System.out.println(Arrays.toString(ints1));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 希尔排序算法</span><br><span class="line">     * 选取每次的排序增量很重要，这里我们第一次增量选择数组长度的一半</span><br><span class="line">     * @param array</span><br><span class="line">     * @return</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static int[] ShellSort(int[] array)&#123;</span><br><span class="line">        for (int h &#x3D; array.length&#x2F;2; h &gt; 0; h&#x2F;&#x3D;2) &#123;</span><br><span class="line">            for (int i &#x3D; h; i &lt; array.length; i++) &#123;</span><br><span class="line">                for (int j &#x3D; i; j &gt; h - 1; j -&#x3D; h) &#123;</span><br><span class="line">                    if(array[j] &lt; array[j-h])&#123;</span><br><span class="line">                        int temp &#x3D; array[j];</span><br><span class="line">                        array[j] &#x3D; array[j-h];</span><br><span class="line">                        array[j-h] &#x3D; temp;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return array;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 这里使用一种名叫Knuth(克努力序列)</span><br><span class="line">     * h &#x3D; 1;</span><br><span class="line">     * h &#x3D; 3*h +1;</span><br><span class="line">     * 首先需要根据这个方程选择第一次的增量</span><br><span class="line">     * 然后每一次的增量需要通过克努力方程计算得出</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static int[] ShellSortKnuth(int[] array)&#123;</span><br><span class="line">        &#x2F;&#x2F;计算出希尔排序的第一次增量</span><br><span class="line">        int step &#x3D; 1;</span><br><span class="line">        while(step &lt;&#x3D; array.length&#x2F;3)&#123;</span><br><span class="line">            step &#x3D; step*3+1;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int h &#x3D; step; step &gt; 0; step &#x3D; (step-1)&#x2F;3) &#123;</span><br><span class="line">            for (int i &#x3D; h; i &lt; array.length; i++) &#123;</span><br><span class="line">                for (int j &#x3D; i; j &gt; h - 1; j -&#x3D; h) &#123;</span><br><span class="line">                    if(array[j] &lt; array[j-h])&#123;</span><br><span class="line">                        int temp &#x3D; array[j];</span><br><span class="line">                        array[j] &#x3D; array[j-h];</span><br><span class="line">                        array[j-h] &#x3D; temp;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return array;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h2 id="数组排序算法-快速排序"><a href="#数组排序算法-快速排序" class="headerlink" title="数组排序算法-快速排序"></a>数组排序算法-快速排序</h2></blockquote>
+<ul>
+<li>快速排序算法思想：<ul>
+<li>分治法：比大小、再分区</li>
+<li>从数组中选取一个基准数</li>
+<li>分区：将比这个数大或者等于他的数全放在他的右边，小于他的数全放在他的左边</li>
+<li>再对左右区间重复第二部，直到各个区间只有一个数。</li>
+</ul>
+</li>
+<li>实现思路：（挖坑填数）<ul>
+<li>将基准数挖出形成第一个坑</li>
+<li>由后向前找比他小的数，找到后挖出此数填到前一个坑中</li>
+<li>由前向后找比他大或者等于的数，找到后也挖出此数填到前一个坑中</li>
+<li>再重复执行2、3步骤。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>这里抽取了一个工具类</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public class QuickSortUtils &#123;</span><br><span class="line"></span><br><span class="line">    public static int[] QuickSort(int[] arr,int start,int end)&#123;</span><br><span class="line">        &#x2F;&#x2F;找出左右分区的分割索引位置，然后对左右分区进行同样的操作，递归调用</span><br><span class="line">        if(start &lt; end)&#123;</span><br><span class="line">            int index &#x3D; getIndex(arr,start,end);</span><br><span class="line">          &#x2F;&#x2F;对左分区进行递归调用</span><br><span class="line">            QuickSort(arr,start,index-1);</span><br><span class="line">            QuickSort(arr,index+1,end);</span><br><span class="line">        &#125;</span><br><span class="line">        return arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static int getIndex(int[] arr, int start, int end) &#123;</span><br><span class="line">        int i &#x3D; start;</span><br><span class="line">        int j &#x3D; end;</span><br><span class="line">        &#x2F;&#x2F;基准数</span><br><span class="line">        int x &#x3D; arr[i];</span><br><span class="line">        while(i &lt; j)&#123;</span><br><span class="line">            while (i &lt; j &amp;&amp; arr[j] &gt;&#x3D; x)</span><br><span class="line">                j--;&#x2F;&#x2F;停在比他小的数的索引处</span><br><span class="line">            if(i &lt; j)&#123;</span><br><span class="line">                arr[i] &#x3D; arr[j];&#x2F;&#x2F;将这个数用来填下挖出的基准数的坑</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            while(i&lt; j &amp;&amp; arr[i] &lt; x)</span><br><span class="line">                i++;&#x2F;&#x2F;停在比他大的数索引处</span><br><span class="line">            if(i &lt; j)&#123;</span><br><span class="line">                arr[j] &#x3D; arr[i];&#x2F;&#x2F;将找出来的数用来填下上一次坑</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;最后将基准数填到最后的i和j重合处</span><br><span class="line">        arr[i] &#x3D; x;</span><br><span class="line">        return i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h2 id="数组排序算法-归并排序"><a href="#数组排序算法-归并排序" class="headerlink" title="数组排序算法 - 归并排序"></a>数组排序算法 - 归并排序</h2></blockquote>
+<ul>
+<li>归并排序算法思想<ul>
+<li>归并排序（MergeSort）就是利用归并的思想实现排序的方法</li>
+</ul>
+</li>
+<li>原理：假设初始序列有N个记录，则可以看成N个有序的子序列，每个子序列的长度为1，然后两两归并，得到N/2长度为2或者1的有序子序列，再两两归并……如此重复，直到得到一个长度为N的有序序列为止。这种成为2路归并排序。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">package Sortalgorithm;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">public class Arraytest08 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        &#x2F;&#x2F;待排序的数组</span><br><span class="line">        int[] arr &#x3D;&#123;10,30,2,1,0,8,7,5,19,29,-2,-2,-4,-3&#125;;</span><br><span class="line"></span><br><span class="line">        chaifen(arr,0,arr.length-1);</span><br><span class="line">        guiBing(arr,0,3,arr.length-1);</span><br><span class="line">        System.out.println(Arrays.toString(arr));</span><br><span class="line">    &#125;</span><br><span class="line">    private static void chaifen(int[] arr, int startIndex, int endIndex) &#123;</span><br><span class="line">&#x2F;&#x2F;        计算中间索引</span><br><span class="line">        int centerIndex &#x3D; (startIndex+endIndex)&#x2F;2;</span><br><span class="line">        if(centerIndex &lt; endIndex)&#123;</span><br><span class="line">            chaifen(arr,startIndex,centerIndex);</span><br><span class="line">            chaifen(arr,centerIndex+1,endIndex);</span><br><span class="line">            guiBing(arr,startIndex,centerIndex,endIndex);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static void guiBing(int[] arr, int startIndex, int centerIndex, int endIndex) &#123;</span><br><span class="line">        &#x2F;&#x2F;定义一个临时数组：</span><br><span class="line">        int[] tempArr &#x3D; new int[endIndex-startIndex+1];</span><br><span class="line">        &#x2F;&#x2F;定义左边的数组的起始索引</span><br><span class="line">        int i &#x3D; startIndex;</span><br><span class="line">        &#x2F;&#x2F;定义数组的中中间索引</span><br><span class="line">        int j &#x3D; centerIndex+1;</span><br><span class="line">        &#x2F;&#x2F;定义临时数组起始索引</span><br><span class="line">        int index &#x3D; 0;</span><br><span class="line">        while(i &lt;&#x3D; centerIndex &amp;&amp; j &lt;&#x3D; endIndex)&#123;</span><br><span class="line">            if(arr[i] &lt;&#x3D; arr[j])&#123;</span><br><span class="line">                tempArr[index] &#x3D; arr[i];</span><br><span class="line">                i++;</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                tempArr[index] &#x3D; arr[j];</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;处理剩余元素</span><br><span class="line">        while(i &lt;&#x3D; centerIndex)&#123;</span><br><span class="line">            tempArr[index] &#x3D; arr[i];</span><br><span class="line">            i++;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        while(j &lt;&#x3D; endIndex)&#123;</span><br><span class="line">            tempArr[index] &#x3D; arr[j];</span><br><span class="line">            j++;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;将临时数组元素取到元素组</span><br><span class="line">        for (int k &#x3D; 0; k &lt; tempArr.length; k++) &#123;</span><br><span class="line">            arr[k+startIndex] &#x3D; tempArr[k];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h2 id="数组排序-基数排序"><a href="#数组排序-基数排序" class="headerlink" title="数组排序-基数排序"></a>数组排序-基数排序</h2></blockquote>
+<ul>
+<li>基数排序实现是将关键字进行分配与收集重复这个步骤而得</li>
+<li>而什么是分配和收集呢？</li>
+<li>原理：将数组中的每个元素按照其个位十位一直往后面的位，先按照个位按0-9进行分配，依次放入相应的编号中，相当于一个桶，然后再从0-9号桶中按照先进先出的原则取出依次放在元素组中，第一轮结束然后进行第二轮，第二轮又按照十位进行如此的分配和收集，直到数组中最大的数的位数，分配收集完成就将数据排好序了。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">package Sortalgorithm;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * 基数排序</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class ArrayTest09 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] arr &#x3D; new int[]&#123;21,1,23,3,453,23,5765,867,465,34,24,15,123&#125;;</span><br><span class="line"></span><br><span class="line">        int[] ints &#x3D; Cardinalsort(arr);</span><br><span class="line">        System.out.println(Arrays.toString(ints));</span><br><span class="line">    &#125;</span><br><span class="line">    private static int[] Cardinalsort(int[] arr) &#123;</span><br><span class="line">        int max &#x3D; getMax(arr);</span><br><span class="line">        &#x2F;&#x2F;获取基数排序迭代次数</span><br><span class="line">        int len &#x3D; String.valueOf(max).length();</span><br><span class="line">        &#x2F;&#x2F;定义10个桶；</span><br><span class="line">        int[][] temparr &#x3D; new int[10][arr.length];</span><br><span class="line">        &#x2F;&#x2F;定义一个统计的数组</span><br><span class="line">        int[] count &#x3D; new int[10];</span><br><span class="line">        for (int i &#x3D; 0,n &#x3D; 1; i &lt; len; i++,n*&#x3D;10) &#123;</span><br><span class="line">            for (int j &#x3D; 0; j &lt; arr.length; j++) &#123;</span><br><span class="line">                int num &#x3D; arr[j]&#x2F;n%10;</span><br><span class="line">                temparr[num][count[num]++] &#x3D; arr[j];</span><br><span class="line">            &#125;</span><br><span class="line">            &#x2F;&#x2F;将元素从桶中取出</span><br><span class="line">            int index &#x3D; 0;</span><br><span class="line">            for (int k &#x3D; 0; k &lt; count.length; k++) &#123;</span><br><span class="line">                if(count[k] !&#x3D; 0)&#123;</span><br><span class="line">                    for (int h &#x3D; 0; h &lt; count[k]; h++) &#123;</span><br><span class="line">                        arr[index++] &#x3D; temparr[k][h];</span><br><span class="line">                    &#125;</span><br><span class="line">                    count[k] &#x3D; 0;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static int getMax(int[] arr) &#123;</span><br><span class="line">        int max &#x3D; arr[0];</span><br><span class="line">        for (int i &#x3D; 1; i &lt; arr.length; i++) &#123;</span><br><span class="line">            if(arr[i] &gt; max)&#123;</span><br><span class="line">                max &#x3D; arr[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数组</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">排序算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java/数组//" class="article-tag-list-link color3">数组</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java/数组/排序算法//" class="article-tag-list-link color5">排序算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/09/%E6%B5%8B%E8%AF%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+  
   
 
 
@@ -375,6 +573,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
             
             <div class="clearfix"></div>
