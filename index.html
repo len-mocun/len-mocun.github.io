@@ -63,7 +63,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 2
+			总文章数 5
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -163,6 +163,363 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-java多线程-线程概述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/21/java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E7%BA%BF%E7%A8%8B%E6%A6%82%E8%BF%B0/">Java多线程-线程概述</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/21/java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E7%BA%BF%E7%A8%8B%E6%A6%82%E8%BF%B0/" class="archive-article-date">
+  	<time datetime="2020-11-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-21</time>
+</a>
+        <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+        <!-- 添加完成 -->
+
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、线程概述"><a href="#一、线程概述" class="headerlink" title="一、线程概述"></a>一、线程概述</h3><h5 id="1、线程相关概念"><a href="#1、线程相关概念" class="headerlink" title="1、线程相关概念"></a>1、线程相关概念</h5><ul>
+<li><p>进程：（Process），是计算机中的程序关于某数据集合上的一次运行活动，是操作系统进行资源分配与调度的基本单位。可以把进程简单的；理解为在操作系统中运行的一个程序</p>
+</li>
+<li><p>线程：（Thread）：进程的一个执行单元，一个线程就是进程中单一顺序的控制流，线程就是进程一个执行分支</p>
+</li>
+<li><ul>
+<li>进程是线程的容器，一个进程至少有一个线程，一个进程中也可以有多个线程</li>
+<li>在操作系统中是以进程为单位分配资源，如虚拟存储空间、文件描述符等</li>
+<li>每个线程都有自己的线程栈，自己的寄存器环境，自己的线程本地存储</li>
+</ul>
+</li>
+<li><p>主线程和子线程</p>
+</li>
+<li><ul>
+<li>JVM启动时会创建一个主线程该主线程负责执行main方法，主线程就是运行main方法的线程</li>
+<li>java中的线程不是孤立的，线程之间存在一些联系，如果在A线程中创建了B线程，就成B线程为A线程的子线程，相应的A线程就是B线程的父线程。</li>
+</ul>
+</li>
+</ul>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多线程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java/多线程//" class="article-tag-list-link color4">多线程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/21/java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E7%BA%BF%E7%A8%8B%E6%A6%82%E8%BF%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+  
+    <article id="post-JVM-Java内存区域与内存溢出异常" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/19/JVM-Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8/">JVM-java内存区域和内存溢出异常</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/19/JVM-Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8/" class="archive-article-date">
+  	<time datetime="2020-11-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-19</time>
+</a>
+        <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+        <!-- 添加完成 -->
+
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1、概述："><a href="#1、概述：" class="headerlink" title="1、概述："></a>1、概述：</h3><p>在C++中，内存管理方面，程序员既是对象的创建者也是对象的管理者，程序员需要对对象的整个生命周期内存做管理，也就是需要为每个new操作做相应的delete或者free操作。</p>
+<p>而在Java中，我们只需要new出对象，而对象的内存管理都是交由JVM去帮我们管理的，一旦出现内存泄漏和溢出方面的问题，如果不知道虚拟机是怎样使用内存的，那排查、修正将是一个异常艰巨的任务。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java/JVM//" class="article-tag-list-link color4">JVM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/19/JVM-Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+  
+    <article id="post-JVM-走进java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/19/JVM-%E8%B5%B0%E8%BF%9Bjava/">JVM-走进java</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/19/JVM-%E8%B5%B0%E8%BF%9Bjava/" class="archive-article-date">
+  	<time datetime="2020-11-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-19</time>
+</a>
+        <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+        <!-- 添加完成 -->
+
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JAVA概述"><a href="#JAVA概述" class="headerlink" title="JAVA概述"></a>JAVA概述</h2><h4 id="1、java的优点："><a href="#1、java的优点：" class="headerlink" title="1、java的优点："></a>1、java的优点：</h4><ul>
+<li>结构严谨，面向对象</li>
+<li>摆脱了硬件的束缚，实现”write once，run anywhere”</li>
+<li>提供一种相对安全的内存管理和访问机制，避免了绝大部分的内存泄漏和指针越界</li>
+<li>实现了热点代码检测和运行时编译及优化</li>
+</ul>
+<h4 id="2、java的技术体系（JCP）"><a href="#2、java的技术体系（JCP）" class="headerlink" title="2、java的技术体系（JCP）"></a>2、java的技术体系（JCP）</h4><ul>
+<li>java程序设计语言</li>
+<li>各种硬件平台上的Java虚拟机实现</li>
+<li>Class文件格式</li>
+<li>Java类库API</li>
+<li>来自各个平台的第三方类库</li>
+</ul>
+<h4 id="3、JDK、JRE、JIT"><a href="#3、JDK、JRE、JIT" class="headerlink" title="3、JDK、JRE、JIT"></a>3、JDK、JRE、JIT</h4><ul>
+<li>JDK：包含java技术体系中的Java程序设计语言、Java虚拟机、Java类库API三个部分</li>
+<li>JRE：成为Java运行时环境。包括了Java类库API、Java虚拟机</li>
+<li>JIT：叫做Java的即时编译器（JDK1.2中出现）</li>
+</ul>
+<h4 id="4、JDK的发展历程"><a href="#4、JDK的发展历程" class="headerlink" title="4、JDK的发展历程"></a>4、JDK的发展历程</h4><h4 id="5、JVM的发展历程"><a href="#5、JVM的发展历程" class="headerlink" title="5、JVM的发展历程"></a>5、JVM的发展历程</h4><ol>
+<li>虚拟机的始祖：Sun Classic/Exact VM：<ul>
+<li>Classic VM： “世界上第一款商用的Java虚拟机”，</li>
+<li>Exact VM：</li>
+</ul>
+</li>
+<li>武林盟主：HotSpot VM</li>
+</ol>
+<h4 id="6、OpenJDK和OracleJDK的区别"><a href="#6、OpenJDK和OracleJDK的区别" class="headerlink" title="6、OpenJDK和OracleJDK的区别"></a>6、OpenJDK和OracleJDK的区别</h4><ul>
+<li><p>OpenJDK是Sun公司在2006年年末把Java开源形成的项目。</p>
+</li>
+<li><p>而OracleJDK就是在OpenJDK源码的基础上衍生出来的发行版本</p>
+</li>
+<li><p>两者相互比较的话，会发现除了文件头的版权注释之外，区域的代码几乎都是相同的，只有少量涉及引用第三方的代码存在差异。</p>
+</li>
+<li><p>在OracleJDK中还会存在一些OpenJDK没有的、闭源的功能，OpenJDK的源码仓库中只包含了标准的JavaSE的源代码。其他的模块虽然是被Oracle开源并放到了OpenJDK组织进行管理，但是是存放在独立的源码仓库中，需要是需要单独下载安装。而在OracleJDK的安装包中是包含了这些独立模块的。</p>
+</li>
+</ul>
+<h4 id="实战：自己编译JDK"><a href="#实战：自己编译JDK" class="headerlink" title="实战：自己编译JDK"></a>实战：自己编译JDK</h4>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java/JVM//" class="article-tag-list-link color4">JVM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/19/JVM-%E8%B5%B0%E8%BF%9Bjava/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
   
     <article id="post-java多线程-生产者和消费者" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -499,11 +856,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数组</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
             
             <div class="clearfix"></div>

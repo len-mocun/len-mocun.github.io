@@ -6,21 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>java多线程-生产者和消费者 | 蓝同学的博客</title>
+  <title>JVM-java内存区域和内存溢出异常 | 蓝同学的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、生产者和消费者 生产者和消费者模式 在java中负责产生数据的模块是生产者，负责使用数据的模块是消费者。生产者和消费者，就是用来解决数据的平衡问题，先有数据才能使用，没有数据时，消费者需要等待。">
+  <meta name="description" content="1、概述：在C++中，内存管理方面，程序员既是对象的创建者也是对象的管理者，程序员需要对对象的整个生命周期内存做管理，也就是需要为每个new操作做相应的delete或者free操作。 而在Java中，我们只需要new出对象，而对象的内存管理都是交由JVM去帮我们管理的，一旦出现内存泄漏和溢出方面的问题，如果不知道虚拟机是怎样使用内存的，那排查、修正将是一个异常艰巨的任务。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java多线程-生产者和消费者">
-<meta property="og:url" content="http://example.com/2020/11/10/java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E7%94%9F%E4%BA%A7%E8%80%85%E5%92%8C%E6%B6%88%E8%B4%B9%E8%80%85/index.html">
+<meta property="og:title" content="JVM-java内存区域和内存溢出异常">
+<meta property="og:url" content="http://example.com/2020/11/19/JVM-Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8/index.html">
 <meta property="og:site_name" content="蓝同学的博客">
-<meta property="og:description" content="一、生产者和消费者 生产者和消费者模式 在java中负责产生数据的模块是生产者，负责使用数据的模块是消费者。生产者和消费者，就是用来解决数据的平衡问题，先有数据才能使用，没有数据时，消费者需要等待。">
+<meta property="og:description" content="1、概述：在C++中，内存管理方面，程序员既是对象的创建者也是对象的管理者，程序员需要对对象的整个生命周期内存做管理，也就是需要为每个new操作做相应的delete或者free操作。 而在Java中，我们只需要new出对象，而对象的内存管理都是交由JVM去帮我们管理的，一旦出现内存泄漏和溢出方面的问题，如果不知道虚拟机是怎样使用内存的，那排查、修正将是一个异常艰巨的任务。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-10T13:07:15.000Z">
-<meta property="article:modified_time" content="2020-11-21T02:47:24.367Z">
+<meta property="og:image" content="c:/Users/MoCun/Desktop/java运行时数据区.jpg">
+<meta property="article:published_time" content="2020-11-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-11-21T02:44:50.885Z">
 <meta property="article:tag" content="java">
-<meta property="article:tag" content="数组">
-<meta property="article:tag" content="排序算法">
+<meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/MoCun/Desktop/java运行时数据区.jpg">
   
     <link rel="alternative" href="/atom.xml" title="蓝同学的博客" type="application/atom+xml">
   
@@ -169,20 +170,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-java多线程-生产者和消费者" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JVM-Java内存区域与内存溢出异常" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      java多线程-生产者和消费者
+      JVM-java内存区域和内存溢出异常
     </h1>
   
 
         
-        <a href="/2020/11/10/java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E7%94%9F%E4%BA%A7%E8%80%85%E5%92%8C%E6%B6%88%E8%B4%B9%E8%80%85/" class="archive-article-date">
-  	<time datetime="2020-11-10T13:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-10</time>
+        <a href="/2020/11/19/JVM-Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8/" class="archive-article-date">
+  	<time datetime="2020-11-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-19</time>
 </a>
         <!-- 需要添加的位置 -->
         <!-- 开始添加字数统计-->
@@ -194,12 +195,75 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、生产者和消费者"><a href="#一、生产者和消费者" class="headerlink" title="一、生产者和消费者"></a>一、生产者和消费者</h3><ol>
-<li>生产者和消费者模式<ul>
-<li>在java中负责产生数据的模块是生产者，负责使用数据的模块是消费者。生产者和消费者，就是用来解决数据的平衡问题，先有数据才能使用，没有数据时，消费者需要等待。</li>
-<li></li>
+        <h3 id="1、概述："><a href="#1、概述：" class="headerlink" title="1、概述："></a>1、概述：</h3><p>在C++中，内存管理方面，程序员既是对象的创建者也是对象的管理者，程序员需要对对象的整个生命周期内存做管理，也就是需要为每个new操作做相应的delete或者free操作。</p>
+<p>而在Java中，我们只需要new出对象，而对象的内存管理都是交由JVM去帮我们管理的，一旦出现内存泄漏和溢出方面的问题，如果不知道虚拟机是怎样使用内存的，那排查、修正将是一个异常艰巨的任务。</p>
+<a id="more"></a>
+
+<h3 id="2、运行时数据区域"><a href="#2、运行时数据区域" class="headerlink" title="2、运行时数据区域"></a>2、运行时数据区域</h3><p>Java虚拟机在执行Java程序的过程中会把他所管理的内存划分为若干个不同的数据区，这些数据区各有各的作用和生命周期。如下图所示：</p>
+<ul>
+<li><img src="C:\Users\MoCun\Desktop\java运行时数据区.jpg" alt="java运行时数据区"></li>
+</ul>
+<ol>
+<li><h3 id="程序计数器（Program-Counter-Register）"><a href="#程序计数器（Program-Counter-Register）" class="headerlink" title="程序计数器（Program Counter Register）"></a>程序计数器（Program Counter Register）</h3><ul>
+<li>较小的内存区域</li>
+<li>可以看做当前线程所执行的字节码的行号指示器</li>
+<li>是程序控制流的指示器，分支、循环、跳转、异常处理、线程恢复都是基于这个计数器完成</li>
+<li>Java虚拟机的多线程时通过线程轮流切换，分配处理器执行时间的方式来是实现的，所以每条线程都有自己的程序计数器，且互不影响，独立存储。像这种区域我们称为线程私有内存</li>
+<li>如果线程正在执行一个Java方法，那么程序计数器记录的是正在执行的虚拟机字节码指令的地址</li>
+<li>如果正在执行的是一个Native方法，那么这个计数器则应为空</li>
+<li>程序计数器这块内存是唯一一个没有规定任何OutOfMemoryError情况的区域</li>
 </ul>
 </li>
+</ol>
+<h3 id="2、Java虚拟机栈"><a href="#2、Java虚拟机栈" class="headerlink" title="2、Java虚拟机栈"></a>2、Java虚拟机栈</h3><ul>
+<li><p>也是线程私有的，生命周期和线程相同</p>
+</li>
+<li><p>描述的是Java方法执行的线程内存模型，每个方法被执行的时候，JVM都会同步创建一个栈帧：该栈帧用于存储局部变量表、操作数栈、动态链接、方法出口等信息。</p>
+<ul>
+<li>局部变量表：存放了编译器可知的各种Java虚拟机基本数据类型、对象引用（并不等同于对象本身，可能是一个执行对象起始地址的引用指针，也可能指向代表对象的句柄或者其他与此对象先关的位置）、returnAddress类型（指向了一条字节码指令的地址）</li>
+</ul>
+</li>
+<li><p>每个方法被调用至执行完毕的过程，就对应着一个方法栈帧在虚拟机中从入栈到出栈的过程</p>
+</li>
+<li><p>这个内存区域规定了两类异常状况：</p>
+<p>1、如果线程请求的栈深度大于虚拟机所允许的栈深度，将抛出StackOverflowError异常；</p>
+<p>2、如果JVM的栈容量可以动态扩展，当栈扩展时无法申请到足够的内存会抛出OutOfMemoryError。其实在Hotspot中虚拟机栈容量是不可扩展的，所以在Hotspot虚拟机上是不会由于栈扩展导致OOMError的，也就是说只要线程申请空间成功之后就不会出现OOM了，但是如果申请失败，仍然是会出现OOM异常的。</p>
+</li>
+</ul>
+<h3 id="3、本地方法栈"><a href="#3、本地方法栈" class="headerlink" title="3、本地方法栈"></a>3、本地方法栈</h3><ul>
+<li>和虚拟机栈的作用是相似的，只是本地方法栈是JVM执行到本地方法（Native）的时候的服务</li>
+<li>《Java虚拟机规范》中对本地方法中使用的语言、使用方式和数据结构没有任何的强制规定，因此具体的虚拟机可以根据需要自由实现，在Hotspot中直接就把本地方法栈和虚拟机栈合二为一。</li>
+<li>和虚拟机栈一样，本地方法栈也会在栈深度溢出或者栈扩展失败时分别抛出StackOverflowError和OutOfMemoryError异常。</li>
+</ul>
+<h3 id="4、Java堆-Java-heap"><a href="#4、Java堆-Java-heap" class="headerlink" title="4、Java堆(Java heap)"></a>4、Java堆(Java heap)</h3><ul>
+<li>JVM所管理的内存最大的一块</li>
+<li>线程共享的，在虚拟机启动时创建</li>
+<li>唯一的目的就是存放对象实例。”几乎”所有的对象都在这里分配内存（由于Java语言的发展，可能不是这么绝对）</li>
+<li>GC管理的内存区域</li>
+<li>由于现代的GC大多都是基于分代收集理论设计的，所以在Java堆中分了：”新生代”、”老年代”、”永久代”、”Eden空间”………………</li>
+<li>堆内存可以被实现为可扩展的，也可以是固定大小的，但是当代的主流的JVM都是按照可扩展来实现的。</li>
+<li>如果java对中没有内存完成实例分配，并且堆也无法再扩展时，JVM会抛出OutOfMemoryError异常。</li>
+</ul>
+<h3 id="5、方法区（Method-Area）"><a href="#5、方法区（Method-Area）" class="headerlink" title="5、方法区（Method Area）"></a>5、方法区（Method Area）</h3><ul>
+<li>各个线程共享的内存区域</li>
+<li>用于存储被虚拟机加载的类型信息、常量、静态常量、即时编译器编译后的代码缓存等数据</li>
+<li>在JDK8之前，很多程序员都习惯在Hotspot上开发，很多人将方法区称为“永久代”，或者将两者混为一谈，但是两者并不等价。原因仅仅是因为HotSpot开发团队把分代设计的理念扩展到了方法区而已，目的就是为了省去专门为方法区编写内存管理机制代码工作。对于其他的虚拟机是不存在永久代概念的。</li>
+<li>可以选择固定大小或者可扩展实现，甚至可以不实现垃圾收集。但是在这部分的垃圾收集还是有必要的。</li>
+<li>《Java 虚拟机规范》规定，如果方法区无法满足新的内存分配需求时，将抛出OutOfMemoryError异常。</li>
+</ul>
+<h5 id="5-1、运行时常量池（Runtime-Constant-Pool）（方法区的一部分）"><a href="#5-1、运行时常量池（Runtime-Constant-Pool）（方法区的一部分）" class="headerlink" title="5.1、运行时常量池（Runtime Constant Pool）（方法区的一部分）"></a>5.1、运行时常量池（Runtime Constant Pool）（方法区的一部分）</h5><ul>
+<li>是方法区的一部分</li>
+<li>Class文件中除了有类的版本、字段、方法、接口等描述信息外，还有一项信息是常量池表，用于存放编译期生成的各种字面量和符号引用。这部分内容将在类加载 后存放在方法区中的运行时常量池中。</li>
+<li>具备动态性，并不要求常量一定要编译期才能产生，即并非预置如Class文件中的常量池的内容才能进入方法区运行时常量池，运行期间也可以将新的常量放入池中。比如开发人员在程序运行时调用的String类的intern()方法。</li>
+<li>当常量池无法申请到内存是会 抛出OutOfMemoryError异常</li>
+</ul>
+<h4 id="6、直接内存"><a href="#6、直接内存" class="headerlink" title="6、直接内存"></a>6、直接内存</h4><ul>
+<li>不是JVM运行时数据区的一部分，也不是《Java虚拟机规范》中规定的内存区域。</li>
+<li>是本机除运行时数据区以外的内存区域。在NIO中使用的。</li>
+<li>受到本机总内存的限制，当服务器管理员配置虚拟机参数时，忽略了直接内存，使得各个内存区域总和大于了物理内存限制，从而导致动态扩展时抛出OutOfMemoryError异常。</li>
+</ul>
+<h4 id="4、HotSpot虚拟机对象的创建（HotSpot-虚拟机在Java堆中对象的分配、布局和访问全过程）"><a href="#4、HotSpot虚拟机对象的创建（HotSpot-虚拟机在Java堆中对象的分配、布局和访问全过程）" class="headerlink" title="4、HotSpot虚拟机对象的创建（HotSpot 虚拟机在Java堆中对象的分配、布局和访问全过程）"></a>4、HotSpot虚拟机对象的创建（HotSpot 虚拟机在Java堆中对象的分配、布局和访问全过程）</h4><ol>
+<li><strong>对象的创建：</strong></li>
 </ol>
 
       
@@ -239,11 +303,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数组</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">排序算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
         		</li>
       		
 		</ul>
@@ -259,11 +319,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/java/数组//" class="article-tag-list-link color3">数组</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java/数组/排序算法//" class="article-tag-list-link color5">排序算法</a>
+        			<a href="/categories/java/JVM//" class="article-tag-list-link color4">JVM</a>
         		</li>
       		
 		</ul>
@@ -318,7 +374,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/11/10/java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E7%94%9F%E4%BA%A7%E8%80%85%E5%92%8C%E6%B6%88%E8%B4%B9%E8%80%85/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/11/19/JVM-Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -332,18 +388,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/11/19/JVM-%E8%B5%B0%E8%BF%9Bjava/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/11/21/java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E7%BA%BF%E7%A8%8B%E6%A6%82%E8%BF%B0/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          JVM-走进java
+          Java多线程-线程概述
         
       </div>
     </a>
   
   
-    <a href="/2020/11/09/java-%E6%95%B0%E7%BB%84%E4%BB%A5%E5%8F%8A%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">java中的数据及常见的排序算法</div>
+    <a href="/2020/11/19/JVM-%E8%B5%B0%E8%BF%9Bjava/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JVM-走进java</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -370,7 +426,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%94%9F%E4%BA%A7%E8%80%85%E5%92%8C%E6%B6%88%E8%B4%B9%E8%80%85"><span class="toc-number">1.</span> <span class="toc-text">一、生产者和消费者</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%A6%82%E8%BF%B0%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">1、概述：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%9F%9F"><span class="toc-number">2.</span> <span class="toc-text">2、运行时数据区域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8%EF%BC%88Program-Counter-Register%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">程序计数器（Program Counter Register）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88"><span class="toc-number">4.</span> <span class="toc-text">2、Java虚拟机栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88"><span class="toc-number">5.</span> <span class="toc-text">3、本地方法栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81Java%E5%A0%86-Java-heap"><span class="toc-number">6.</span> <span class="toc-text">4、Java堆(Java heap)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E6%96%B9%E6%B3%95%E5%8C%BA%EF%BC%88Method-Area%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">5、方法区（Method Area）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1%E3%80%81%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0%EF%BC%88Runtime-Constant-Pool%EF%BC%89%EF%BC%88%E6%96%B9%E6%B3%95%E5%8C%BA%E7%9A%84%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%89"><span class="toc-number">7.0.1.</span> <span class="toc-text">5.1、运行时常量池（Runtime Constant Pool）（方法区的一部分）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98"><span class="toc-number">7.1.</span> <span class="toc-text">6、直接内存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81HotSpot%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA%EF%BC%88HotSpot-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%9C%A8Java%E5%A0%86%E4%B8%AD%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%86%E9%85%8D%E3%80%81%E5%B8%83%E5%B1%80%E5%92%8C%E8%AE%BF%E9%97%AE%E5%85%A8%E8%BF%87%E7%A8%8B%EF%BC%89"><span class="toc-number">7.2.</span> <span class="toc-text">4、HotSpot虚拟机对象的创建（HotSpot 虚拟机在Java堆中对象的分配、布局和访问全过程）</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

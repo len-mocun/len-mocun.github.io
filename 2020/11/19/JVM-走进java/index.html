@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>java多线程-生产者和消费者 | 蓝同学的博客</title>
+  <title>JVM-走进java | 蓝同学的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、生产者和消费者 生产者和消费者模式 在java中负责产生数据的模块是生产者，负责使用数据的模块是消费者。生产者和消费者，就是用来解决数据的平衡问题，先有数据才能使用，没有数据时，消费者需要等待。">
+  <meta name="description" content="JAVA概述1、java的优点： 结构严谨，面向对象 摆脱了硬件的束缚，实现”write once，run anywhere” 提供一种相对安全的内存管理和访问机制，避免了绝大部分的内存泄漏和指针越界 实现了热点代码检测和运行时编译及优化  2、java的技术体系（JCP） java程序设计语言 各种硬件平台上的Java虚拟机实现 Class文件格式 Java类库API 来自各个平台的第三方类库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java多线程-生产者和消费者">
-<meta property="og:url" content="http://example.com/2020/11/10/java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E7%94%9F%E4%BA%A7%E8%80%85%E5%92%8C%E6%B6%88%E8%B4%B9%E8%80%85/index.html">
+<meta property="og:title" content="JVM-走进java">
+<meta property="og:url" content="http://example.com/2020/11/19/JVM-%E8%B5%B0%E8%BF%9Bjava/index.html">
 <meta property="og:site_name" content="蓝同学的博客">
-<meta property="og:description" content="一、生产者和消费者 生产者和消费者模式 在java中负责产生数据的模块是生产者，负责使用数据的模块是消费者。生产者和消费者，就是用来解决数据的平衡问题，先有数据才能使用，没有数据时，消费者需要等待。">
+<meta property="og:description" content="JAVA概述1、java的优点： 结构严谨，面向对象 摆脱了硬件的束缚，实现”write once，run anywhere” 提供一种相对安全的内存管理和访问机制，避免了绝大部分的内存泄漏和指针越界 实现了热点代码检测和运行时编译及优化  2、java的技术体系（JCP） java程序设计语言 各种硬件平台上的Java虚拟机实现 Class文件格式 Java类库API 来自各个平台的第三方类库">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-10T13:07:15.000Z">
-<meta property="article:modified_time" content="2020-11-21T02:47:24.367Z">
+<meta property="article:published_time" content="2020-11-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-11-19T12:04:10.556Z">
 <meta property="article:tag" content="java">
-<meta property="article:tag" content="数组">
-<meta property="article:tag" content="排序算法">
+<meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="蓝同学的博客" type="application/atom+xml">
@@ -169,20 +168,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-java多线程-生产者和消费者" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JVM-走进java" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      java多线程-生产者和消费者
+      JVM-走进java
     </h1>
   
 
         
-        <a href="/2020/11/10/java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E7%94%9F%E4%BA%A7%E8%80%85%E5%92%8C%E6%B6%88%E8%B4%B9%E8%80%85/" class="archive-article-date">
-  	<time datetime="2020-11-10T13:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-10</time>
+        <a href="/2020/11/19/JVM-%E8%B5%B0%E8%BF%9Bjava/" class="archive-article-date">
+  	<time datetime="2020-11-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-19</time>
 </a>
         <!-- 需要添加的位置 -->
         <!-- 开始添加字数统计-->
@@ -194,14 +193,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、生产者和消费者"><a href="#一、生产者和消费者" class="headerlink" title="一、生产者和消费者"></a>一、生产者和消费者</h3><ol>
-<li>生产者和消费者模式<ul>
-<li>在java中负责产生数据的模块是生产者，负责使用数据的模块是消费者。生产者和消费者，就是用来解决数据的平衡问题，先有数据才能使用，没有数据时，消费者需要等待。</li>
-<li></li>
+        <h2 id="JAVA概述"><a href="#JAVA概述" class="headerlink" title="JAVA概述"></a>JAVA概述</h2><h4 id="1、java的优点："><a href="#1、java的优点：" class="headerlink" title="1、java的优点："></a>1、java的优点：</h4><ul>
+<li>结构严谨，面向对象</li>
+<li>摆脱了硬件的束缚，实现”write once，run anywhere”</li>
+<li>提供一种相对安全的内存管理和访问机制，避免了绝大部分的内存泄漏和指针越界</li>
+<li>实现了热点代码检测和运行时编译及优化</li>
+</ul>
+<h4 id="2、java的技术体系（JCP）"><a href="#2、java的技术体系（JCP）" class="headerlink" title="2、java的技术体系（JCP）"></a>2、java的技术体系（JCP）</h4><ul>
+<li>java程序设计语言</li>
+<li>各种硬件平台上的Java虚拟机实现</li>
+<li>Class文件格式</li>
+<li>Java类库API</li>
+<li>来自各个平台的第三方类库</li>
+</ul>
+<h4 id="3、JDK、JRE、JIT"><a href="#3、JDK、JRE、JIT" class="headerlink" title="3、JDK、JRE、JIT"></a>3、JDK、JRE、JIT</h4><ul>
+<li>JDK：包含java技术体系中的Java程序设计语言、Java虚拟机、Java类库API三个部分</li>
+<li>JRE：成为Java运行时环境。包括了Java类库API、Java虚拟机</li>
+<li>JIT：叫做Java的即时编译器（JDK1.2中出现）</li>
+</ul>
+<h4 id="4、JDK的发展历程"><a href="#4、JDK的发展历程" class="headerlink" title="4、JDK的发展历程"></a>4、JDK的发展历程</h4><h4 id="5、JVM的发展历程"><a href="#5、JVM的发展历程" class="headerlink" title="5、JVM的发展历程"></a>5、JVM的发展历程</h4><ol>
+<li>虚拟机的始祖：Sun Classic/Exact VM：<ul>
+<li>Classic VM： “世界上第一款商用的Java虚拟机”，</li>
+<li>Exact VM：</li>
 </ul>
 </li>
+<li>武林盟主：HotSpot VM</li>
 </ol>
-
+<h4 id="6、OpenJDK和OracleJDK的区别"><a href="#6、OpenJDK和OracleJDK的区别" class="headerlink" title="6、OpenJDK和OracleJDK的区别"></a>6、OpenJDK和OracleJDK的区别</h4><ul>
+<li><p>OpenJDK是Sun公司在2006年年末把Java开源形成的项目。</p>
+</li>
+<li><p>而OracleJDK就是在OpenJDK源码的基础上衍生出来的发行版本</p>
+</li>
+<li><p>两者相互比较的话，会发现除了文件头的版权注释之外，区域的代码几乎都是相同的，只有少量涉及引用第三方的代码存在差异。</p>
+</li>
+<li><p>在OracleJDK中还会存在一些OpenJDK没有的、闭源的功能，OpenJDK的源码仓库中只包含了标准的JavaSE的源代码。其他的模块虽然是被Oracle开源并放到了OpenJDK组织进行管理，但是是存放在独立的源码仓库中，需要是需要单独下载安装。而在OracleJDK的安装包中是包含了这些独立模块的。</p>
+</li>
+</ul>
+<h4 id="实战：自己编译JDK"><a href="#实战：自己编译JDK" class="headerlink" title="实战：自己编译JDK"></a>实战：自己编译JDK</h4>
       
 
       
@@ -239,11 +267,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数组</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">排序算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
         		</li>
       		
 		</ul>
@@ -259,11 +283,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/java/数组//" class="article-tag-list-link color3">数组</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java/数组/排序算法//" class="article-tag-list-link color5">排序算法</a>
+        			<a href="/categories/java/JVM//" class="article-tag-list-link color4">JVM</a>
         		</li>
       		
 		</ul>
@@ -318,7 +338,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/11/10/java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E7%94%9F%E4%BA%A7%E8%80%85%E5%92%8C%E6%B6%88%E8%B4%B9%E8%80%85/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/11/19/JVM-%E8%B5%B0%E8%BF%9Bjava/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -332,18 +352,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/11/19/JVM-%E8%B5%B0%E8%BF%9Bjava/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/11/19/JVM-Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          JVM-走进java
+          JVM-java内存区域和内存溢出异常
         
       </div>
     </a>
   
   
-    <a href="/2020/11/09/java-%E6%95%B0%E7%BB%84%E4%BB%A5%E5%8F%8A%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">java中的数据及常见的排序算法</div>
+    <a href="/2020/11/10/java%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E7%94%9F%E4%BA%A7%E8%80%85%E5%92%8C%E6%B6%88%E8%B4%B9%E8%80%85/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">java多线程-生产者和消费者</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -370,7 +390,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%94%9F%E4%BA%A7%E8%80%85%E5%92%8C%E6%B6%88%E8%B4%B9%E8%80%85"><span class="toc-number">1.</span> <span class="toc-text">一、生产者和消费者</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">JAVA概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81java%E7%9A%84%E4%BC%98%E7%82%B9%EF%BC%9A"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、java的优点：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81java%E7%9A%84%E6%8A%80%E6%9C%AF%E4%BD%93%E7%B3%BB%EF%BC%88JCP%EF%BC%89"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、java的技术体系（JCP）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81JDK%E3%80%81JRE%E3%80%81JIT"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、JDK、JRE、JIT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81JDK%E7%9A%84%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、JDK的发展历程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81JVM%E7%9A%84%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B"><span class="toc-number">1.0.5.</span> <span class="toc-text">5、JVM的发展历程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81OpenJDK%E5%92%8COracleJDK%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.0.6.</span> <span class="toc-text">6、OpenJDK和OracleJDK的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%EF%BC%9A%E8%87%AA%E5%B7%B1%E7%BC%96%E8%AF%91JDK"><span class="toc-number">1.0.7.</span> <span class="toc-text">实战：自己编译JDK</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
