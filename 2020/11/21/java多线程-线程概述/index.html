@@ -15,13 +15,13 @@
 <meta property="og:site_name" content="蓝同学的博客">
 <meta property="og:description" content="一、线程概述1、线程相关概念 进程：（Process），是计算机中的程序关于某数据集合上的一次运行活动，是操作系统进行资源分配与调度的基本单位。可以把进程简单的；理解为在操作系统中运行的一个程序  线程：（Thread）：进程的一个执行单元，一个线程就是进程中单一顺序的控制流，线程就是进程一个执行分支   进程是线程的容器，一个进程至少有一个线程，一个进程中也可以有多个线程 在操作系统中是以进程为">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2020/11/21/imgs/%E7%BA%BF%E7%A8%8B%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F.jpg">
+<meta property="og:image" content="http://example.com/imgs/%E7%BA%BF%E7%A8%8B%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F-1606574868841.jpg">
 <meta property="article:published_time" content="2020-11-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-11-28T14:40:04.792Z">
+<meta property="article:modified_time" content="2020-11-28T14:48:32.101Z">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="多线程">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2020/11/21/imgs/%E7%BA%BF%E7%A8%8B%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F.jpg">
+<meta name="twitter:image" content="http://example.com/imgs/%E7%BA%BF%E7%A8%8B%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F-1606574868841.jpg">
   
     <link rel="alternative" href="/atom.xml" title="蓝同学的博客" type="application/atom+xml">
   
@@ -260,7 +260,7 @@ public class MyThread extends Thread &#123;
              新开启的线程会执行run方法
              如果我们开启了多个线程，start调用的顺序并不一定就是线程的启动顺序
              多线程运行的结果与代码执行顺序或调用顺序无关。
-* */
+*/
         System.out.println(&quot;这是main线程后面的代码&quot;);
     &#125;
 &#125;
@@ -351,7 +351,7 @@ public class MyThread extends Thread &#123;
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">State</span> </span>&#123; </span><br><span class="line">    NEW,<span class="comment">//新建状态，创建了线程对象，在调用start方法之前就处于这个状态</span></span><br><span class="line">    </span><br><span class="line">    RUNNABLE,<span class="comment">//可运行状态，他是一个复合状态，包含了ready和running两个状态，ready状态表示该线程可</span></span><br><span class="line">    <span class="comment">//以被线程调度器进行调度，使他处于running状态。running状态表示该线程正在执行。</span></span><br><span class="line">    <span class="comment">//Thread.yield()方法就是把当前线程从running状态转换为ready状态</span></span><br><span class="line">    </span><br><span class="line">    BLOCKED,<span class="comment">//阻塞状态，线程发起一个阻塞的IO操作，或者说，申请其他线程正在独占资源时，也就是申请获得锁的时候</span></span><br><span class="line">        <span class="comment">//线程会转换为此状态,处于阻塞状态的线程不会占用CPU资源。</span></span><br><span class="line">        <span class="comment">//当阻塞的IO操作完毕之后，或者获得了申请的CPU资源，那么状态就会转换成RUNNABLE状态</span></span><br><span class="line">    </span><br><span class="line">    WAITING,<span class="comment">//当前线程线程执行了Object.wait()方法，或者说其他线程使用了thread.join()，就会把当前线程转换成为WAITING</span></span><br><span class="line">    <span class="comment">//等待状态，执行Object.notify()/notifyAll()方法时，或者（插队）加入的线程执行完毕，</span></span><br><span class="line">    <span class="comment">//当前线程会转换为RUNNABLE状态</span></span><br><span class="line">    </span><br><span class="line">    TIMED_WAITING,<span class="comment">//与WATING状态类似，都是等待状态，只是他不会无限等待，如果线程没有在指定的时间范围内</span></span><br><span class="line">        <span class="comment">//完成指定的操作，该线程会自动转换成为RUNNABLE状态</span></span><br><span class="line">    </span><br><span class="line">    TERMINATED;<span class="comment">//终止状态，线程结束就处于终止状态</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>线程的状态转换图</strong></p>
-<p><img src="../imgs/%E7%BA%BF%E7%A8%8B%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F.jpg" alt="线程声明周期"></p>
+<p><img src="/imgs/%E7%BA%BF%E7%A8%8B%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F-1606574868841.jpg" alt="线程声明周期"></p>
 </li>
 </ul>
 
@@ -629,15 +629,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数组</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
             
             <div class="clearfix"></div>
